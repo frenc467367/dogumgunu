@@ -15,68 +15,84 @@ body{
     overflow:hidden;
 }
 
+/* giriş ekranı */
+#login{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    text-align:center;
+    margin-top:10px;
+}
+
+button{
+    padding:10px 15px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* ana içerik */
 .container{
     max-width:800px;
     margin:auto;
     padding:30px 20px;
+    position:relative;
+    z-index:2;
 }
 
 h1{ color:#ff4d6d; }
 
 .countdown{
-    font-size:24px;
+    font-size:22px;
     color:#ffd166;
     margin:15px 0;
-}
-
-button{
-    padding:12px 16px;
-    margin:8px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:15px;
 }
 
 .surprise{ background:#ff4d6d; color:white; }
 .voice{ background:#4dabf7; color:white; }
 
-.hidden{ display:none; margin-top:15px; color:#00ffcc; }
-
-#login{
-    position:fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background:#000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
+.hidden{
+    display:none;
+    margin-top:15px;
+    color:#00ffcc;
+    white-space:pre-line;
 }
 
-input{
-    padding:10px;
-    border-radius:8px;
-    border:none;
-    text-align:center;
-}
-
+/* canvas */
 canvas{
     position:fixed;
     top:0;
     left:0;
+    width:100%;
+    height:100%;
     pointer-events:none;
+    z-index:1;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔐 GİRİŞ EKRANI -->
+<!-- 🔐 LOGIN -->
 <div id="login">
     <h2>Şifreyi gir ❤️</h2>
-    <p>(Sadece Emrensum için)</p>
-    <input type="password" id="pass">
+    <p>Sadece Emrensum için</p>
+    <input type="password" id="pass" placeholder="şifre">
     <button onclick="checkPass()">Giriş</button>
 </div>
 
@@ -91,15 +107,15 @@ canvas{
 <p>
 aşkım emrensu<br><br>
 
-bu sayfayı yapmak için günlerce uğraştım ama hiç yorulmadım çünkü sen vardın<br><br>
+bu sayfayı senin için yaptım ve gerçekten her saniyesine değdi<br><br>
 
 sen hayatıma girdiğinden beri her şey değişti ya<br>
-önceden her şey boş gibiydi şimdi her şey seninle dolu<br><br>
+önceden boş gibi gelen günler şimdi seninle dolu<br><br>
 
 aşkım bazen sadece sesin bile yetiyor bana<br>
-bazen gülüşün bile dünyamı düzeltmeye yetiyor<br><br>
+bazen gülüşün içimi düzeltiyor<br><br>
 
-ben seni çok seviyorum anlatamıyorum bazen<br><br>
+ben seni çok seviyorum<br><br>
 
 <h2 style="color:#ff4d6d;">
 seni her şeyden herkesten çok seviyorum ❤️
@@ -113,8 +129,6 @@ seni her şeyden herkesten çok seviyorum ❤️
 <div id="surpriseBox" class="hidden">
 aşkım  
 eğer bunu okuyorsan bil ki sen benim için çok özelsin  
-bu sayfa sadece bir şey değil  
-benim sana olan hislerim  
 iyi ki doğdun ❤️
 </div>
 
@@ -126,11 +140,12 @@ iyi ki doğdun ❤️
 
 <script>
 
-// 🔐 şifre
+// 🔐 ŞİFRE SİSTEMİ (DÜZELTİLDİ)
 function checkPass(){
-    let pass = document.getElementById("pass").value;
-    if(pass == "emrensum"){
-        document.getElementById("login").style.display="none";
+    let pass = document.getElementById("pass").value.trim().toLowerCase();
+
+    if(pass === "emrensum"){
+        document.getElementById("login").style.display = "none";
         startHearts();
     }else{
         alert("yanlış aşkım ❤️");
@@ -168,30 +183,4 @@ countdown();
 
 // 💖 kalp animasyonu
 function startHearts(){
-    let canvas = document.getElementById("hearts");
-    let ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let hearts = [];
-
-    function Heart(){
-        this.x = Math.random()*canvas.width;
-        this.y = 0;
-        this.size = Math.random()*6+2;
-        this.speed = Math.random()*2+1;
-    }
-
-    for(let i=0;i<100;i++){
-        hearts.push(new Heart());
-    }
-
-    function draw(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle="#ff4d6d";
-
-        for(let i=0;i<hearts.length;i++){
-            let h = hearts[i];
-            ctx.beginPath();
-            ctx
+    let
