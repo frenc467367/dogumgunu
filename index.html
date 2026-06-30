@@ -9,63 +9,78 @@
 body{
     margin:0;
     font-family: Arial;
-    background: linear-gradient(135deg,#0f0f0f,#1c1c2c);
+    background:#0f0f1a;
     color:white;
     text-align:center;
+    overflow:hidden;
 }
 
 .container{
     max-width:800px;
     margin:auto;
-    padding:40px 20px;
+    padding:30px 20px;
 }
 
-h1{
-    color:#ff4d6d;
-    font-size:38px;
-}
-
-p{
-    font-size:18px;
-    line-height:1.8;
-}
+h1{ color:#ff4d6d; }
 
 .countdown{
-    font-size:26px;
+    font-size:24px;
     color:#ffd166;
-    margin:20px 0;
+    margin:15px 0;
 }
 
 button{
-    padding:12px 18px;
+    padding:12px 16px;
+    margin:8px;
     border:none;
     border-radius:10px;
     cursor:pointer;
-    margin:10px;
-    font-size:16px;
+    font-size:15px;
 }
 
-.surprise{
-    background:#ff4d6d;
-    color:white;
+.surprise{ background:#ff4d6d; color:white; }
+.voice{ background:#4dabf7; color:white; }
+
+.hidden{ display:none; margin-top:15px; color:#00ffcc; }
+
+#login{
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
 }
 
-.voice{
-    background:#4dabf7;
-    color:white;
+input{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    text-align:center;
 }
 
-.hidden{
-    display:none;
-    margin-top:20px;
-    font-size:18px;
-    color:#00ffcc;
-    white-space:pre-line;
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
 }
 </style>
 </head>
 
 <body>
+
+<!-- 🔐 GİRİŞ EKRANI -->
+<div id="login">
+    <h2>Şifreyi gir ❤️</h2>
+    <p>(Sadece İmren için)</p>
+    <input type="password" id="pass">
+    <button onclick="checkPass()">Giriş</button>
+</div>
+
+<canvas id="hearts"></canvas>
 
 <div class="container">
 
@@ -74,32 +89,33 @@ button{
 <div class="countdown" id="countdown"></div>
 
 <p>
-Emrensu…<br><br>
+aşkım emrensu<br><br>
 
-Bu sayfayı senin için hazırlamak tam 3 günümü aldı. Ama her saniyesine değdi. Çünkü her satırında aklım sendin.<br><br>
+bu sayfayı yapmak için günlerce uğraştım ama hiç yorulmadım çünkü sen vardın<br><br>
 
-Sen hayatıma girdiğinden beri her şey değişti. Günlerim daha anlamlı, gecelerim daha huzurlu oldu.<br><br>
+sen hayatıma girdiğinden beri her şey değişti ya<br>
+önceden her şey boş gibiydi şimdi her şey seninle dolu<br><br>
 
-Bazen bir gülüşün bütün yorgunluğumu alıyor.<br><br>
+aşkım bazen sadece sesin bile yetiyor bana<br>
+bazen gülüşün bile dünyamı düzeltmeye yetiyor<br><br>
 
-Ben seni sadece bugün değil, her gün daha fazla seviyorum.<br><br>
+ben seni çok seviyorum anlatamıyorum bazen<br><br>
 
-Ve bunu kelimelere sığdırmak zor…<br><br>
+<h2 style="color:#ff4d6d;">
+seni her şeyden herkesten çok seviyorum ❤️
+</h2>
 
-<h2 style="color:#ff4d6d;">Seni her şeyden ve herkesten çok seviyorum ❤️</h2>
-
-İyi ki doğdun Emrensu…
 </p>
 
-<button class="surprise" onclick="openSurprise()">🎁 Sürpriz Mesaj</button>
+<button class="surprise" onclick="openSurprise()">🎁 Sürpriz</button>
 <button class="voice" onclick="playVoice()">🎤 Sesimi Dinle</button>
 
 <div id="surpriseBox" class="hidden">
-❤️ Emrensu…  
-Eğer bunu görüyorsan bil ki sen benim için çok özelsin.  
-Bu sadece bir sayfa değil, sana olan hislerimin küçük bir parçası.  
-
-İyi ki varsın ❤️
+aşkım  
+eğer bunu okuyorsan bil ki sen benim için çok özelsin  
+bu sayfa sadece bir şey değil  
+benim sana olan hislerim  
+iyi ki doğdun ❤️
 </div>
 
 <audio id="voiceAudio">
@@ -110,17 +126,28 @@ Bu sadece bir sayfa değil, sana olan hislerimin küçük bir parçası.
 
 <script>
 
-// 🎁 Sürpriz aç/kapa
+// 🔐 şifre
+function checkPass(){
+    let pass = document.getElementById("pass").value;
+    if(pass == "imren"){
+        document.getElementById("login").style.display="none";
+        startHearts();
+    }else{
+        alert("yanlış aşkım ❤️");
+    }
+}
+
+// 🎁 sürpriz
 function openSurprise(){
     document.getElementById("surpriseBox").classList.toggle("hidden");
 }
 
-// 🎤 Ses çal
+// 🎤 ses
 function playVoice(){
     document.getElementById("voiceAudio").play();
 }
 
-// ⏳ 00.00 geri sayım
+// ⏳ geri sayım
 function countdown(){
     let now = new Date().getTime();
     let target = new Date();
@@ -133,11 +160,52 @@ function countdown(){
     let s = Math.floor((diff % (1000*60)) / 1000);
 
     document.getElementById("countdown").innerHTML =
-    "Doğum gününe kalan: " + h + " saat " + m + " dk " + s + " sn";
+    "doğum gününe kalan " + h + " saat " + m + " dk " + s + " sn";
 }
 
 setInterval(countdown,1000);
 countdown();
+
+// 💖 kalp animasyonu
+function startHearts(){
+    let canvas = document.getElementById("hearts");
+    let ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let hearts = [];
+
+    function Heart(){
+        this.x = Math.random()*canvas.width;
+        this.y = 0;
+        this.size = Math.random()*6+2;
+        this.speed = Math.random()*2+1;
+    }
+
+    for(let i=0;i<100;i++){
+        hearts.push(new Heart());
+    }
+
+    function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle="#ff4d6d";
+
+        for(let i=0;i<hearts.length;i++){
+            let h = hearts[i];
+            ctx.beginPath();
+            ctx.arc(h.x,h.y,h.size,0,Math.PI*2);
+            ctx.fill();
+            h.y += h.speed;
+
+            if(h.y > canvas.height){
+                h.y = 0;
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
 
 </script>
 
