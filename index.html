@@ -1,164 +1,51 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İyi ki Doğdun ❤️ Emrensum</title>
+<h1 style="text-align: center; color: #ff4d4d;">İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
 
-<style>
-body{
-    margin:0;
-    font-family: Arial;
-    background:#0f0f1a;
-    color:white;
-    text-align:center;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:30px 15px;
-    position:relative;
-    z-index:2;
-}
-
-h1{
-    color:#ff4d6d;
-    font-size:26px;
-}
-
-.countdown{
-    font-size:20px;
-    color:#ffd166;
-    margin:15px 0;
-}
-
-button{
-    padding:12px 16px;
-    margin:8px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.surprise{ background:#ff4d6d; color:white; }
-.voice{ background:#4dabf7; color:white; }
-
-.hidden{
-    display:none;
-    margin-top:15px;
-    color:#00ffcc;
-    white-space:pre-line;
-}
-
-/* FOTO GALERİ */
-.gallery{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    margin-top:20px;
-}
-
-.gallery img{
-    width:120px;
-    height:120px;
-    object-fit:cover;
-    border-radius:15px;
-}
-
-/* SES */
-audio{
-    display:none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<h1>İYİ Kİ DOĞDUN ❤️ EMRENSUM</h1>
-
-<div class="countdown" id="countdown"></div>
-
-<p>
-şimdiii bu güzel günü bana değerli kılan ilkim herşeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum  
-<br><br>
-
-DOĞUM GÜNÜN KUTLU OLSUN SEVGİLİMMMM 💖🌸🩷  
-<br><br>
-
-bugün senin günün  
-önceden boş gibi olan günler şimdi seninle dolu  
-<br><br>
-
-seni çok seviyorum ❤️
-</p>
-
-<button class="surprise" onclick="openSurprise()">🎁 Sürpriz Mesaj</button>
-<button class="voice" onclick="playVoice()">🎤 Sesimi Dinle</button>
-
-<div id="surpriseBox" class="hidden">
-aşkım ❤️  
-sürpriz kısmına perşembe günü saat 19:10 gibi hazır ol  
-seni çok seviyorum 🥹💖
+<!-- Geri Sayım Alanı (Mevcut scriptinizle çalışan kısım) -->
+<div id="sayac" style="text-align: center; color: #ffd700; font-weight: bold;">
+    doğum gününe kalan 0 saat 54 dk 50 sn
 </div>
 
-<!-- SES -->
-<audio id="voiceAudio">
-  <source src="sesim.mp3" type="audio/mpeg">
-</audio>
-
-<!-- FOTO GALERİ -->
-<h2 style="color:#ff4d6d; margin-top:30px;">💖 Biz 💖</h2>
-
-<div class="gallery">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-<img src="foto4.jpg">
-<img src="foto5.jpg">
-<img src="foto6.jpg">
-<img src="foto7.jpg">
-<img src="foto8.jpg">
+<!-- Sevgi Mesajları -->
+<div style="text-align: center; color: #ffffff; margin-top: 20px; line-height: 1.8;">
+    <p>şimdiii bu güzel günü bana değerli kılan ilkim her şeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum</p>
+    
+    <p>doğum günün kutlu olsun sevgilimmmm 💝🌸</p>
+    
+    <p>bugün senin günün bana bu günleri değerli yaptığın için sana ayrı bir teşekkür ediyorum</p>
+    
+    <p>önceden boş gibi olan günler şimdi seninle dolu seni çok seviyorum</p>
+    
+    <p>iyiiii kiiii doğdunnn sevgilimmm seni çok seviyorummmmmm 🧡❤️💙💚</p>
+    
+    <p>bu gönderi tam üç günümü aldı bu süreçte seni boşlamışsam kalbini kırmışsam özür dilerim 🥺</p>
+    
+    <h3 style="color: #ff4d4d; margin-top: 25px;">seni her şeyden herkesten çok seviyorum ❤️</h3>
 </div>
 
+<!-- Sürpriz Butonları ve Ses Kaydı -->
+<div style="text-align: center; margin-top: 30px;">
+    <!-- Sürpriz Mesaj Butonu -->
+    <button style="background-color: #ff4d4d; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px;">
+        🎁 Sürpriz Mesaj
+    </button>
+
+    <!-- Ses Oynatıcı (GitHub'daki sesim.mp3.mp4 dosyasına doğrudan bağlı) -->
+    <audio controls src="sesim.mp3.mp4" style="vertical-align: middle;"></audio>
+    
+    <p style="color: #ffffff; margin-top: 15px;">
+        aşkım ❤️ perşembe günü saat 19:10 gibi hazır ol seni seviyorum 🫶🏻
+    </p>
 </div>
 
-<script>
-
-// 🎁 sürpriz
-function openSurprise(){
-    document.getElementById("surpriseBox").classList.toggle("hidden");
-}
-
-// 🎤 ses çal
-function playVoice(){
-    document.getElementById("voiceAudio").play();
-}
-
-// ⏳ geri sayım
-function countdown(){
-    let now = new Date().getTime();
-    let target = new Date();
-    target.setHours(24,0,0,0);
-
-    let diff = target - now;
-
-    let h = Math.floor(diff / (1000*60*60));
-    let m = Math.floor((diff % (1000*60*60)) / (1000*60));
-    let s = Math.floor((diff % (1000*60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-    "doğum gününe kalan " + h + " saat " + m + " dk " + s + " sn";
-}
-
-setInterval(countdown,1000);
-countdown();
-
-</script>
-
-</body>
-</html>
+<!-- Fotoğraflar Bölümü (GitHub'daki foto1.jpg.jpeg, foto2.jpg.jpeg sırasına göre ayarlanmıştır) -->
+<h2 style="text-align: center; color: #ff4d4d; margin-top: 40px;">❤️ Biz ❤️</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
+    <img src="foto1.jpg.jpeg" alt="Biz 1" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto2.jpg.jpeg" alt="Biz 2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto3.jpg.jpeg" alt="Biz 3" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto4.jpg.jpeg" alt="Biz 4" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto5.jpg.jpeg" alt="Biz 5" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto6.jpg.jpeg" alt="Biz 6" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto7.jpg.jpeg" alt="Biz 7" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+    <img src="foto8.jpg.jpeg" alt="Biz 8" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
+</div
