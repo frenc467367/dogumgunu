@@ -45,6 +45,20 @@
                 opacity: 0;
             }
         }
+
+        /* Sürpriz mesajın başlangıçta gizli olması için stil */
+        #gizliMesaj {
+            display: none;
+            color: #ffffff;
+            margin-top: 15px;
+            font-size: 18px;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -76,20 +90,21 @@
 
     <!-- Sürpriz Butonları ve Ses Kaydı -->
     <div style="text-align: center; margin-top: 30px;">
-        <!-- Sürpriz Mesaj Butonu -->
-        <button style="background-color: #ff4d4d; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px; font-weight: bold;">
+        <!-- Sürpriz Mesaj Butonu (Tıklayınca mesajı gösteren fonksiyon eklendi) -->
+        <button onclick="mesajiGoster()" style="background-color: #ff4d4d; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px; font-weight: bold;">
             🎁 Sürpriz Mesaj
         </button>
 
-        <!-- Ses Oynatıcı (GitHub'daki çift uzantılı dosya adınıza göre ayarlandı) -->
+        <!-- Ses Oynatıcı -->
         <audio controls src="sesim.mp3.mp4" style="vertical-align: middle;"></audio>
         
-        <p style="color: #ffffff; margin-top: 15px;">
-            aşkım ❤️ perşembe günü saat 19:10 gibi hazır ol seni seviyorum 🫶🏻
-        </p>
+        <!-- Başlangıçta gizli olan, butona basınca açılacak mesaj alanı -->
+        <div id="gizliMesaj">
+            aşkım ❤️ perşembe günü saat 19:10 gibi hazır ol seni seviyorum 🌺❤️
+        </div>
     </div>
 
-    <!-- Fotoğraflar Bölümü (GitHub'daki tam dosya adlarına göre ayarlandı) -->
+    <!-- Fotoğraflar Bölümü -->
     <h2 style="text-align: center; color: #ff4d4d; margin-top: 40px;">❤️ Biz ❤️</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; margin-bottom: 50px;">
         <img src="foto1.jpg.jpeg" alt="Biz 1" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
@@ -102,11 +117,18 @@
         <img src="foto8.jpg.jpeg" alt="Biz 8" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
     </div>
 
-    <!-- 3. Kalp Yağmuru Oluşturucu JavaScript Kodu -->
+    <!-- 3. Kalp Yağmuru ve Buton Kontrol JavaScript Kodu -->
     <script>
+        // Sürpriz mesajı görünür kılan fonksiyon
+        function mesajiGoster() {
+            const mesaj = document.getElementById('gizliMesaj');
+            mesaj.style.display = 'block';
+        }
+
+        // Kalp yağmurunu başlatan fonksiyon
         function createHearts() {
             const container = document.body;
-            const heartCount = 30; // Ekrandaki kalp yoğunluğu
+            const heartCount = 30;
 
             for (let i = 0; i < heartCount; i++) {
                 const heart = document.createElement('div');
