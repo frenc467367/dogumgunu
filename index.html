@@ -66,7 +66,7 @@
     <!-- Başlık Bölümü -->
     <h1 style="text-align: center; color: #ff4d4d;">İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
 
-    <!-- Canlı Geri Sayım Alanı (Artık otomatik saniyeleri sayacak) -->
+    <!-- Canlı Geri Sayım Alanı -->
     <div id="sayac" style="text-align: center; color: #ffd700; font-weight: bold; font-size: 22px; margin-bottom: 20px;">
         Geri sayım yükleniyor...
     </div>
@@ -116,13 +116,11 @@
 
     <!-- JavaScript Kodları -->
     <script>
-        // Sürpriz mesajı görünür kılan fonksiyon
         function mesajiGoster() {
             const mesaj = document.getElementById('gizliMesaj');
             mesaj.style.display = 'block';
         }
 
-        // Kalp yağmurunu başlatan fonksiyon
         function createHearts() {
             const container = document.body;
             const heartCount = 30;
@@ -141,28 +139,24 @@
         }
         window.addEventListener('load', createHearts);
 
-        // CANLI GERİ SAYIM SCRIPT'I
-        // Doğum gününün kutlanacağı hedef tarihi buraya YIL-AY-GÜN T00:00:00 formatında yazın
-        const hedefTarih = new Date("2026-07-02T00:00:00").getTime();
+        // CANLI GERİ SAYIM SCRIPT'I (Bu gece 00:00'a odaklandı)
+        const hedefTarih = new Date("2026-07-01T00:00:00").getTime();
 
         const sayacGuncelle = setInterval(function() {
             const simdi = new Date().getTime();
             const kalanSure = hedefTarih - simdi;
 
-            // Gün, saat, dakika ve saniye hesaplamaları
             const gun = Math.floor(kalanSure / (1000 * 60 * 60 * 24));
             const saat = Math.floor((kalanSure % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const dakika = Math.floor((kalanSure % (1000 * 60 * 60)) / (1000 * 60));
             const saniye = Math.floor((kalanSure % (1000 * 60)) / 1000);
 
-            // Ekrana yazdırılacak metin formatı
             let sonucMetni = "doğum gününe kalan ";
             if (gun > 0) sonucMetni += gun + " gün ";
             sonucMetni += saat + " saat " + dakika + " dk " + saniye + " sn";
 
             document.getElementById("sayac").innerHTML = sonucMetni;
 
-            // Süre bittiğinde (Saat tam 00:00 olduğunda) çıkacak yazı
             if (kalanSure < 0) {
                 clearInterval(sayacGuncelle);
                 document.getElementById("sayac").innerHTML = "İYİ Kİ DOĞDUN EMRENSUM! 🎉🎂❤️";
