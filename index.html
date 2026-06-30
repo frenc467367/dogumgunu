@@ -12,23 +12,23 @@ body{
     background:#0f0f1a;
     color:white;
     text-align:center;
-    overflow:hidden;
 }
 
 .container{
-    max-width:800px;
+    max-width:900px;
     margin:auto;
-    padding:30px 20px;
+    padding:30px 15px;
     position:relative;
     z-index:2;
 }
 
 h1{
     color:#ff4d6d;
+    font-size:26px;
 }
 
 .countdown{
-    font-size:22px;
+    font-size:20px;
     color:#ffd166;
     margin:15px 0;
 }
@@ -43,6 +43,7 @@ button{
 }
 
 .surprise{ background:#ff4d6d; color:white; }
+.voice{ background:#4dabf7; color:white; }
 
 .hidden{
     display:none;
@@ -51,64 +52,77 @@ button{
     white-space:pre-line;
 }
 
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-    z-index:0;
+/* FOTO GALERİ */
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.gallery img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* SES */
+audio{
+    display:none;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="hearts"></canvas>
-
 <div class="container">
 
-<h1>İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
+<h1>İYİ Kİ DOĞDUN ❤️ EMRENSUM</h1>
 
 <div class="countdown" id="countdown"></div>
 
 <p>
-şimdiii bu güzel günü bana değerli kılan ilkim her şeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum  
+şimdiii bu güzel günü bana değerli kılan ilkim herşeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum  
 <br><br>
 
-doğum günün kutlu olsun sevgilimmmm 💖🌸🩷  
+DOĞUM GÜNÜN KUTLU OLSUN SEVGİLİMMMM 💖🌸🩷  
 <br><br>
 
 bugün senin günün  
-bana bu günleri değerli yaptığın için sana ayrı bir teşekkür ediyorum  
-<br><br>
-
 önceden boş gibi olan günler şimdi seninle dolu  
-seni çok seviyorum  
 <br><br>
 
-iyiiii kiiii doğdunnn sevgilimmm  
-seni çok seviyorummmmm 🩷❤️💖💜🧡💚  
-<br><br>
-
-bu gönderi tam üç günümü aldı  
-bu süreçte seni boşlamışsam kalbini kırmışsam özür dilerim 🥹  
-<br><br>
-
-<h2 style="color:#ff4d6d;">
-seni her şeyden herkesten çok seviyorum ❤️
-</h2>
-
+seni çok seviyorum ❤️
 </p>
 
 <button class="surprise" onclick="openSurprise()">🎁 Sürpriz Mesaj</button>
+<button class="voice" onclick="playVoice()">🎤 Sesimi Dinle</button>
 
 <div id="surpriseBox" class="hidden">
 aşkım ❤️  
- perşembe günü saat 19:10 gibi hazır ol  
+sürpriz kısmına perşembe günü saat 19:10 gibi hazır ol  
+seni çok seviyorum 🥹💖
+</div>
 
-seni seviyorum 🥹💖  
+<!-- SES -->
+<audio id="voiceAudio">
+  <source src="sesim.mp3" type="audio/mpeg">
+</audio>
+
+<!-- FOTO GALERİ -->
+<h2 style="color:#ff4d6d; margin-top:30px;">💖 Biz 💖</h2>
+
+<div class="gallery">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+<img src="foto5.jpg">
+<img src="foto6.jpg">
+<img src="foto7.jpg">
+<img src="foto8.jpg">
 </div>
 
 </div>
@@ -120,7 +134,12 @@ function openSurprise(){
     document.getElementById("surpriseBox").classList.toggle("hidden");
 }
 
-// ⏳ geri sayım (00.00’a kadar)
+// 🎤 ses çal
+function playVoice(){
+    document.getElementById("voiceAudio").play();
+}
+
+// ⏳ geri sayım
 function countdown(){
     let now = new Date().getTime();
     let target = new Date();
@@ -138,51 +157,6 @@ function countdown(){
 
 setInterval(countdown,1000);
 countdown();
-
-// 💖 kalp animasyonu
-function startHearts(){
-    let canvas = document.getElementById("hearts");
-    let ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let hearts = [];
-
-    for(let i=0;i<80;i++){
-        hearts.push({
-            x: Math.random()*canvas.width,
-            y: Math.random()*canvas.height,
-            size: Math.random()*5+2,
-            speed: Math.random()*2+1
-        });
-    }
-
-    function draw(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.fillStyle="#ff4d6d";
-
-        for(let i=0;i<hearts.length;i++){
-            let h = hearts[i];
-            ctx.beginPath();
-            ctx.arc(h.x,h.y,h.size,0,Math.PI*2);
-            ctx.fill();
-
-            h.y += h.speed;
-
-            if(h.y > canvas.height){
-                h.y = 0;
-                h.x = Math.random()*canvas.width;
-            }
-        }
-
-        requestAnimationFrame(draw);
-    }
-
-    draw();
-}
-
-startHearts();
 
 </script>
 
