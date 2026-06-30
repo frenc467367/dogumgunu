@@ -7,7 +7,7 @@
     <style>
         /* 1. Sayfa Tasarımı ve Karanlık Arka Plan */
         body {
-            background-color: #121212; /* Karanlık arka plan */
+            background-color: #121212; 
             color: white;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
@@ -21,11 +21,11 @@
         .heart {
             position: fixed;
             top: -50px;
-            color: #ff4d4d; /* Kırmızı kalpler */
+            color: #ff4d4d; 
             font-size: 24px;
             animation: fall linear infinite;
             pointer-events: none;
-            z-index: -1; /* Yazıların arkasında kalması için */
+            z-index: -1; 
             opacity: 0;
         }
 
@@ -66,9 +66,9 @@
     <!-- Başlık Bölümü -->
     <h1 style="text-align: center; color: #ff4d4d;">İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
 
-    <!-- Geri Sayım Alanı (Mevcut scriptiniz bu id'yi kullanarak sayacı çalıştıracaktır) -->
-    <div id="sayac" style="text-align: center; color: #ffd700; font-weight: bold; font-size: 20px; margin-bottom: 20px;">
-        doğum gününe kalan 0 saat 54 dk 50 sn
+    <!-- Canlı Geri Sayım Alanı (Artık otomatik saniyeleri sayacak) -->
+    <div id="sayac" style="text-align: center; color: #ffd700; font-weight: bold; font-size: 22px; margin-bottom: 20px;">
+        Geri sayım yükleniyor...
     </div>
 
     <!-- Sevgi Mesajları -->
@@ -90,15 +90,12 @@
 
     <!-- Sürpriz Butonları ve Ses Kaydı -->
     <div style="text-align: center; margin-top: 30px;">
-        <!-- Sürpriz Mesaj Butonu (Tıklayınca mesajı gösteren fonksiyon eklendi) -->
         <button onclick="mesajiGoster()" style="background-color: #ff4d4d; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px; font-weight: bold;">
             🎁 Sürpriz Mesaj
         </button>
 
-        <!-- Ses Oynatıcı -->
         <audio controls src="sesim.mp3.mp4" style="vertical-align: middle;"></audio>
         
-        <!-- Başlangıçta gizli olan, butona basınca açılacak mesaj alanı -->
         <div id="gizliMesaj">
             aşkım ❤️ perşembe günü saat 19:10 gibi hazır ol seni seviyorum 🌺❤️
         </div>
@@ -117,7 +114,7 @@
         <img src="foto8.jpg.jpeg" alt="Biz 8" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
     </div>
 
-    <!-- 3. Kalp Yağmuru ve Buton Kontrol JavaScript Kodu -->
+    <!-- JavaScript Kodları -->
     <script>
         // Sürpriz mesajı görünür kılan fonksiyon
         function mesajiGoster() {
@@ -143,6 +140,35 @@
             }
         }
         window.addEventListener('load', createHearts);
+
+        // CANLI GERİ SAYIM SCRIPT'I
+        // Doğum gününün kutlanacağı hedef tarihi buraya YIL-AY-GÜN T00:00:00 formatında yazın
+        const hedefTarih = new Date("2026-07-02T00:00:00").getTime();
+
+        const sayacGuncelle = setInterval(function() {
+            const simdi = new Date().getTime();
+            const kalanSure = hedefTarih - simdi;
+
+            // Gün, saat, dakika ve saniye hesaplamaları
+            const gun = Math.floor(kalanSure / (1000 * 60 * 60 * 24));
+            const saat = Math.floor((kalanSure % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const dakika = Math.floor((kalanSure % (1000 * 60 * 60)) / (1000 * 60));
+            const saniye = Math.floor((kalanSure % (1000 * 60)) / 1000);
+
+            // Ekrana yazdırılacak metin formatı
+            let sonucMetni = "doğum gününe kalan ";
+            if (gun > 0) sonucMetni += gun + " gün ";
+            sonucMetni += saat + " saat " + dakika + " dk " + saniye + " sn";
+
+            document.getElementById("sayac").innerHTML = sonucMetni;
+
+            // Süre bittiğinde (Saat tam 00:00 olduğunda) çıkacak yazı
+            if (kalanSure < 0) {
+                clearInterval(sayacGuncelle);
+                document.getElementById("sayac").innerHTML = "İYİ Kİ DOĞDUN EMRENSUM! 🎉🎂❤️";
+                document.getElementById("sayac").style.fontSize = "26px";
+            }
+        }, 1000);
     </script>
 
 </body>
