@@ -1,51 +1,79 @@
-<h1 style="text-align: center; color: #ff4d4d;">İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
+<style>
+  /* 1. Tüm sayfanın arka planını karanlık yap */
+  body {
+    background-color: #121212; /* Tam siyah yerine göze daha hoş gelen koyu gri */
+    color: white; /* Metinler okunabilir olsun diye beyaz yapıldı */
+    font-family: Arial, sans-serif; /* Temel yazı tipi */
+    overflow-x: hidden; /* Kalpler sağa kaymasın */
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+  }
 
-<!-- Geri Sayım Alanı (Mevcut scriptinizle çalışan kısım) -->
-<div id="sayac" style="text-align: center; color: #ffd700; font-weight: bold;">
-    doğum gününe kalan 0 saat 54 dk 50 sn
-</div>
+  /* 2. Kalp Yağmuru Animasyonu İçin CSS */
+  .heart-container {
+    position: fixed;
+    top: -50px; /* Kalpler ekranın dışından başlasın */
+    width: 100%;
+    height: 100vh;
+    pointer-events: none; /* Kalplerin üzerine tıklanamasın, siteyi engellemesin */
+    z-index: -1; /* Kalpler metinlerin ve resimlerin arkasında kalsın */
+  }
 
-<!-- Sevgi Mesajları -->
-<div style="text-align: center; color: #ffffff; margin-top: 20px; line-height: 1.8;">
-    <p>şimdiii bu güzel günü bana değerli kılan ilkim her şeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum</p>
-    
-    <p>doğum günün kutlu olsun sevgilimmmm 💝🌸</p>
-    
-    <p>bugün senin günün bana bu günleri değerli yaptığın için sana ayrı bir teşekkür ediyorum</p>
-    
-    <p>önceden boş gibi olan günler şimdi seninle dolu seni çok seviyorum</p>
-    
-    <p>iyiiii kiiii doğdunnn sevgilimmm seni çok seviyorummmmmm 🧡❤️💙💚</p>
-    
-    <p>bu gönderi tam üç günümü aldı bu süreçte seni boşlamışsam kalbini kırmışsam özür dilerim 🥺</p>
-    
-    <h3 style="color: #ff4d4d; margin-top: 25px;">seni her şeyden herkesten çok seviyorum ❤️</h3>
-</div>
+  .heart {
+    position: absolute;
+    color: #ff4d4d; /* Kalplerin kırmızı rengi */
+    font-size: 24px; /* Kalplerin boyutu */
+    animation: fall linear infinite; /* Animasyon ayarları */
+    opacity: 0;
+  }
 
-<!-- Sürpriz Butonları ve Ses Kaydı -->
-<div style="text-align: center; margin-top: 30px;">
-    <!-- Sürpriz Mesaj Butonu -->
-    <button style="background-color: #ff4d4d; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px;">
-        🎁 Sürpriz Mesaj
-    </button>
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1; /* Kalp görünüre gelsin */
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg); /* Ekranın altına kadar gitsin */
+      opacity: 0; /* Ve kaybolsun */
+    }
+  }
 
-    <!-- Ses Oynatıcı (GitHub'daki sesim.mp3.mp4 dosyasına doğrudan bağlı) -->
-    <audio controls src="sesim.mp3.mp4" style="vertical-align: middle;"></audio>
-    
-    <p style="color: #ffffff; margin-top: 15px;">
-        aşkım ❤️ perşembe günü saat 19:10 gibi hazır ol seni seviyorum 🫶🏻
-    </p>
-</div>
+  /* Farklı zamanlarda ve hızlarda düşmeleri için varyasyonlar (Bu kısmı JavaScript ile oluşturacağız) */
+</style>
 
-<!-- Fotoğraflar Bölümü (GitHub'daki foto1.jpg.jpeg, foto2.jpg.jpeg sırasına göre ayarlanmıştır) -->
-<h2 style="text-align: center; color: #ff4d4d; margin-top: 40px;">❤️ Biz ❤️</h2>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
-    <img src="foto1.jpg.jpeg" alt="Biz 1" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto2.jpg.jpeg" alt="Biz 2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto3.jpg.jpeg" alt="Biz 3" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto4.jpg.jpeg" alt="Biz 4" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto5.jpg.jpeg" alt="Biz 5" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto6.jpg.jpeg" alt="Biz 6" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto7.jpg.jpeg" alt="Biz 7" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-    <img src="foto8.jpg.jpeg" alt="Biz 8" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid white;">
-</div
+<!-- 3. Kalp Yağmuru İçin Gerekli HTML ve JavaScript Bloğu (Bunu da kodun en sonuna, </body>'den hemen önce yapıştırabilirsin) -->
+<script>
+  // Kalpleri oluşturacak ve animasyonu başlatacak fonksiyon
+  function createHearts() {
+    const container = document.body;
+    const heartCount = 30; // Ekranda aynı anda kaç kalp olsun? (Performans için ideal sayı)
+
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️'; // Kalp sembolü (Dilersen 💖 gibi başka bir şeyle de değiştirebilirsin)
+
+      // Rastgele başlangıç pozisyonu (Soldan sağa)
+      heart.style.left = Math.random() * 100 + 'vw';
+
+      // Rastgele gecikme süresi (Hepsi aynı anda düşmesin)
+      heart.style.animationDelay = Math.random() * 5 + 's';
+
+      // Rastgele düşme hızı (Bazıları daha hızlı, bazıları daha yavaş)
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4s ile 7s arasında
+
+      container.appendChild(heart);
+    }
+  }
+
+  // Sayfa yüklendiğinde kalpleri oluştur
+  window.addEventListener('load', createHearts);
+</script>
