@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İyi ki Doğdun ❤️ İmren</title>
+<title>İyi ki Doğdun ❤️ Emrensum</title>
 
 <style>
 body{
@@ -75,7 +75,7 @@ canvas{
 <!-- 🔐 GİRİŞ EKRANI -->
 <div id="login">
     <h2>Şifreyi gir ❤️</h2>
-    <p>(Sadece İmren için)</p>
+    <p>(Sadece Emrensum için)</p>
     <input type="password" id="pass">
     <button onclick="checkPass()">Giriş</button>
 </div>
@@ -84,7 +84,7 @@ canvas{
 
 <div class="container">
 
-<h1>İyi ki Doğdun ❤️ İmren</h1>
+<h1>İyi ki Doğdun ❤️ Emrensum</h1>
 
 <div class="countdown" id="countdown"></div>
 
@@ -129,7 +129,7 @@ iyi ki doğdun ❤️
 // 🔐 şifre
 function checkPass(){
     let pass = document.getElementById("pass").value;
-    if(pass == "imren"){
+    if(pass == "emrensum"){
         document.getElementById("login").style.display="none";
         startHearts();
     }else{
@@ -194,20 +194,4 @@ function startHearts(){
         for(let i=0;i<hearts.length;i++){
             let h = hearts[i];
             ctx.beginPath();
-            ctx.arc(h.x,h.y,h.size,0,Math.PI*2);
-            ctx.fill();
-            h.y += h.speed;
-
-            if(h.y > canvas.height){
-                h.y = 0;
-            }
-        }
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
-
-</script>
-
-</body>
-</html>
+            ctx
