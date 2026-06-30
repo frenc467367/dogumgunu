@@ -19,6 +19,8 @@ body{
     max-width:800px;
     margin:auto;
     padding:30px 20px;
+    position:relative;
+    z-index:2;
 }
 
 h1{
@@ -41,7 +43,6 @@ button{
 }
 
 .surprise{ background:#ff4d6d; color:white; }
-.voice{ background:#4dabf7; color:white; }
 
 .hidden{
     display:none;
@@ -59,11 +60,6 @@ canvas{
     pointer-events:none;
     z-index:0;
 }
-
-.container{
-    position:relative;
-    z-index:2;
-}
 </style>
 </head>
 
@@ -73,22 +69,32 @@ canvas{
 
 <div class="container">
 
-<h1>İyi ki Doğdun ❤️ Emrensum</h1>
+<h1>İYİ Kİ DOĞDUN ❤️ EMRENSUM ❤️</h1>
 
 <div class="countdown" id="countdown"></div>
 
 <p>
-aşkım emrensu<br><br>
+şimdiii bu güzel günü bana değerli kılan ilkim her şeyim sevgilim emrensuma teşekkürlerimi en içten dileklerimle iletiyorum  
+<br><br>
 
-bu sayfayı sana yapmak için uğraştım ve gerçekten her saniyesi sana değerdi<br><br>
+doğum günün kutlu olsun sevgilimmmm 💖🌸🩷  
+<br><br>
 
-sen hayatıma girdiğinden beri her şey değişti ya<br>
-önceden boş gibi olan günler şimdi seninle dolu<br><br>
+bugün senin günün  
+bana bu günleri değerli yaptığın için sana ayrı bir teşekkür ediyorum  
+<br><br>
 
-aşkım bazen sadece sesin bile yetiyor bana<br>
-bazen gülüşün bile içimi toparlıyor<br><br>
+önceden boş gibi olan günler şimdi seninle dolu  
+seni çok seviyorum  
+<br><br>
 
-ben seni çok seviyorum<br><br>
+iyiiii kiiii doğdunnn sevgilimmm  
+seni çok seviyorummmmm 🩷❤️💖💜🧡💚  
+<br><br>
+
+bu gönderi tam üç günümü aldı  
+bu süreçte seni boşlamışsam kalbini kırmışsam özür dilerim 🥹  
+<br><br>
 
 <h2 style="color:#ff4d6d;">
 seni her şeyden herkesten çok seviyorum ❤️
@@ -96,19 +102,14 @@ seni her şeyden herkesten çok seviyorum ❤️
 
 </p>
 
-<button class="surprise" onclick="openSurprise()">🎁 Sürpriz</button>
-<button class="voice" onclick="playVoice()">🎤 Sesimi Dinle</button>
+<button class="surprise" onclick="openSurprise()">🎁 Sürpriz Mesaj</button>
 
 <div id="surpriseBox" class="hidden">
-aşkım  
-iyi ki varsın  
-iyi ki doğdun ❤️  
-sen benim en güzel şeyimsin
-</div>
+aşkım ❤️  
+ perşembe günü saat 19:10 gibi hazır ol  
 
-<audio id="voiceAudio">
-  <source src="sesim.mp3" type="audio/mpeg">
-</audio>
+seni seviyorum 🥹💖  
+</div>
 
 </div>
 
@@ -119,12 +120,7 @@ function openSurprise(){
     document.getElementById("surpriseBox").classList.toggle("hidden");
 }
 
-// 🎤 ses
-function playVoice(){
-    document.getElementById("voiceAudio").play();
-}
-
-// ⏳ geri sayım
+// ⏳ geri sayım (00.00’a kadar)
 function countdown(){
     let now = new Date().getTime();
     let target = new Date();
